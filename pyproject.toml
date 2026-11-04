@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vedant-evidence-gate"
+version = "1.0.0"
+description = "An inspectable reference implementation for scoped, current, cited evidence contracts"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+evidence-gate = "evidence_gate.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["evidence_gate*"]
+
+[tool.setuptools.data-files]
+"share/evidence-gate" = ["data/corpus.jsonl", "data/cases.json"]

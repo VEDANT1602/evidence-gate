@@ -1,0 +1,450 @@
+[
+  {
+    "id": "dev-refund",
+    "split": "dev",
+    "category": "current_policy",
+    "query": "refund eligibility window",
+    "region": "us",
+    "expected_status": "answered",
+    "expected_answer": "Refund eligibility lasts 30 days after purchase.",
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "dev-incident",
+    "split": "dev",
+    "category": "current_policy",
+    "query": "incident escalation response",
+    "region": "us",
+    "expected_status": "answered",
+    "expected_answer": "Critical incidents must be escalated within 15 minutes.",
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "dev-cache",
+    "split": "dev",
+    "category": "current_policy",
+    "query": "retrieval cache expiration ttl",
+    "region": "us",
+    "expected_status": "answered",
+    "expected_answer": "Retrieval cache entries expire after 300 seconds.",
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "dev-unknown",
+    "split": "dev",
+    "category": "unknown",
+    "query": "quantum settlement procedure",
+    "region": "us",
+    "expected_status": "abstain",
+    "expected_answer": null,
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "dev-missing-region",
+    "split": "dev",
+    "category": "ambiguous_scope",
+    "query": "refund eligibility window",
+    "region": null,
+    "expected_status": "clarify",
+    "expected_answer": null,
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "dev-denied",
+    "split": "dev",
+    "category": "access_boundary",
+    "query": "privileged access review interval",
+    "region": "us",
+    "expected_status": "abstain",
+    "expected_answer": null,
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "dev-conflict",
+    "split": "dev",
+    "category": "conflicting_sources",
+    "query": "enterprise export approval reviewers",
+    "region": "us",
+    "expected_status": "abstain",
+    "expected_answer": null,
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "dev-admin",
+    "split": "dev",
+    "category": "current_policy",
+    "query": "privileged access review interval",
+    "region": "us",
+    "roles": [
+      "admin"
+    ],
+    "expected_status": "answered",
+    "expected_answer": "Privileged access is reviewed every 30 days.",
+    "tenant": "northstar",
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-refund-us",
+    "split": "holdout",
+    "category": "current_policy",
+    "query": "How long is the refund eligibility window?",
+    "region": "us",
+    "expected_status": "answered",
+    "expected_answer": "Refund eligibility lasts 30 days after purchase.",
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-refund-eu",
+    "split": "holdout",
+    "category": "current_policy",
+    "query": "How long is the refund eligibility window?",
+    "region": "eu",
+    "expected_status": "answered",
+    "expected_answer": "Refund eligibility lasts 45 days after purchase.",
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-incident-us",
+    "split": "holdout",
+    "category": "current_policy",
+    "query": "What is the incident escalation response?",
+    "region": "us",
+    "expected_status": "answered",
+    "expected_answer": "Critical incidents must be escalated within 15 minutes.",
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-incident-eu",
+    "split": "holdout",
+    "category": "current_policy",
+    "query": "What is the incident escalation response?",
+    "region": "eu",
+    "expected_status": "answered",
+    "expected_answer": "Critical incidents must be escalated within 15 minutes.",
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-retention-us",
+    "split": "holdout",
+    "category": "current_policy",
+    "query": "What is the audit log retention duration?",
+    "region": "us",
+    "expected_status": "answered",
+    "expected_answer": "Audit logs are retained for 180 days.",
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-retention-eu",
+    "split": "holdout",
+    "category": "current_policy",
+    "query": "What is the audit log retention duration?",
+    "region": "eu",
+    "expected_status": "answered",
+    "expected_answer": "Audit logs are retained for 180 days.",
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-cache-us",
+    "split": "holdout",
+    "category": "current_policy",
+    "query": "What is the retrieval cache expiration ttl?",
+    "region": "us",
+    "expected_status": "answered",
+    "expected_answer": "Retrieval cache entries expire after 300 seconds.",
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-cache-eu",
+    "split": "holdout",
+    "category": "current_policy",
+    "query": "What is the retrieval cache expiration ttl?",
+    "region": "eu",
+    "expected_status": "answered",
+    "expected_answer": "Retrieval cache entries expire after 300 seconds.",
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-rate-us",
+    "split": "holdout",
+    "category": "current_policy",
+    "query": "What is the api request rate limit?",
+    "region": "us",
+    "expected_status": "answered",
+    "expected_answer": "The API request limit is 120 requests per minute.",
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-rate-eu",
+    "split": "holdout",
+    "category": "current_policy",
+    "query": "What is the api request rate limit?",
+    "region": "eu",
+    "expected_status": "answered",
+    "expected_answer": "The API request limit is 120 requests per minute.",
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-backup-us",
+    "split": "holdout",
+    "category": "current_policy",
+    "query": "What is the database backup frequency schedule?",
+    "region": "us",
+    "expected_status": "answered",
+    "expected_answer": "Database backups run every 6 hours.",
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-backup-eu",
+    "split": "holdout",
+    "category": "current_policy",
+    "query": "What is the database backup frequency schedule?",
+    "region": "eu",
+    "expected_status": "answered",
+    "expected_answer": "Database backups run every 6 hours.",
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-recovery-us",
+    "split": "holdout",
+    "category": "current_policy",
+    "query": "What is the service recovery objective rto?",
+    "region": "us",
+    "expected_status": "answered",
+    "expected_answer": "The service recovery time objective is 45 minutes.",
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-recovery-eu",
+    "split": "holdout",
+    "category": "current_policy",
+    "query": "What is the service recovery objective rto?",
+    "region": "eu",
+    "expected_status": "answered",
+    "expected_answer": "The service recovery time objective is 45 minutes.",
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-refund-ambiguous",
+    "split": "holdout",
+    "category": "ambiguous_scope",
+    "query": "refund eligibility window",
+    "region": null,
+    "expected_status": "clarify",
+    "expected_answer": null,
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-backup-ambiguous",
+    "split": "holdout",
+    "category": "ambiguous_scope",
+    "query": "database backup frequency",
+    "region": null,
+    "expected_status": "clarify",
+    "expected_answer": null,
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-export-conflict",
+    "split": "holdout",
+    "category": "conflicting_sources",
+    "query": "How many enterprise export approval reviewers?",
+    "region": "eu",
+    "expected_status": "abstain",
+    "expected_answer": null,
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-unknown-tax",
+    "split": "holdout",
+    "category": "unknown",
+    "query": "cryptocurrency tax reconciliation",
+    "region": "us",
+    "expected_status": "abstain",
+    "expected_answer": null,
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-unknown-space",
+    "split": "holdout",
+    "category": "unknown",
+    "query": "orbital launch telemetry",
+    "region": "eu",
+    "expected_status": "abstain",
+    "expected_answer": null,
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-denied",
+    "split": "holdout",
+    "category": "access_boundary",
+    "query": "privileged access review interval",
+    "region": "us",
+    "expected_status": "abstain",
+    "expected_answer": null,
+    "tenant": "northstar",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-admin",
+    "split": "holdout",
+    "category": "current_policy",
+    "query": "privileged access review interval",
+    "region": "eu",
+    "roles": [
+      "admin"
+    ],
+    "expected_status": "answered",
+    "expected_answer": "Privileged access is reviewed every 30 days.",
+    "tenant": "northstar",
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-harbor",
+    "split": "holdout",
+    "category": "tenant_isolation",
+    "query": "refund eligibility window",
+    "tenant": "harbor",
+    "region": "us",
+    "expected_status": "answered",
+    "expected_answer": "Harbor internal refund eligibility window: consult the assigned policy owner.",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-empty-tenant",
+    "split": "holdout",
+    "category": "tenant_isolation",
+    "query": "refund eligibility window",
+    "tenant": "empty",
+    "region": "us",
+    "expected_status": "abstain",
+    "expected_answer": null,
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  },
+  {
+    "id": "holdout-harbor-cache",
+    "split": "holdout",
+    "category": "tenant_isolation",
+    "query": "retrieval cache expiration ttl",
+    "tenant": "harbor",
+    "region": "us",
+    "expected_status": "answered",
+    "expected_answer": "Harbor internal retrieval cache expiration ttl: consult the assigned policy owner.",
+    "roles": [
+      "reader"
+    ],
+    "as_of": "2026-11-04"
+  }
+]

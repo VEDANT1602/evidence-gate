@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="355" viewBox="0 0 760 355">
+<rect width="760" height="355" fill="#fff"/>
+<g font-family="sans-serif" fill="#172b4d">
+<text x="24" y="30" font-size="18" font-weight="bold">Authority gates change the answer/abstain decision</text>
+<text x="24" y="53" font-size="12">Fixed fictional holdout suite. Percent of cases; answer accuracy uses answered cases only.</text>
+<line x1="270.0" y1="72" x2="270.0" y2="285" stroke="#e2e8f0"/>
+<text x="270.0" y="305" text-anchor="middle" font-size="11">0%</text>
+<line x1="362.5" y1="72" x2="362.5" y2="285" stroke="#e2e8f0"/>
+<text x="362.5" y="305" text-anchor="middle" font-size="11">25%</text>
+<line x1="455.0" y1="72" x2="455.0" y2="285" stroke="#e2e8f0"/>
+<text x="455.0" y="305" text-anchor="middle" font-size="11">50%</text>
+<line x1="547.5" y1="72" x2="547.5" y2="285" stroke="#e2e8f0"/>
+<text x="547.5" y="305" text-anchor="middle" font-size="11">75%</text>
+<line x1="640.0" y1="72" x2="640.0" y2="285" stroke="#e2e8f0"/>
+<text x="640.0" y="305" text-anchor="middle" font-size="11">100%</text>
+<text x="24" y="107" font-size="13">Correct contract outcomes</text>
+<rect x="270" y="84" width="77.08" height="18" fill="#718096"/>
+<text x="354.08" y="98" font-size="12">20.8%</text>
+<rect x="270" y="108" width="370.00" height="18" fill="#087e8b"/>
+<text x="647.00" y="122" font-size="12">100.0%</text>
+<text x="24" y="179" font-size="13">Requests answered</text>
+<rect x="270" y="156" width="323.75" height="18" fill="#718096"/>
+<text x="600.75" y="170" font-size="12">87.5%</text>
+<rect x="270" y="180" width="262.08" height="18" fill="#087e8b"/>
+<text x="539.08" y="194" font-size="12">70.8%</text>
+<text x="24" y="251" font-size="13">Correct among answers</text>
+<rect x="270" y="228" width="35.24" height="18" fill="#718096"/>
+<text x="312.24" y="242" font-size="12">9.5%</text>
+<rect x="270" y="252" width="370.00" height="18" fill="#087e8b"/>
+<text x="647.00" y="266" font-size="12">100.0%</text>
+<rect x="24" y="324" width="12" height="12" fill="#718096"/><text x="43" y="334" font-size="12">ACL-aware relevance baseline</text>
+<rect x="285" y="324" width="12" height="12" fill="#087e8b"/><text x="304" y="334" font-size="12">Evidence Gate</text>
+</g></svg>

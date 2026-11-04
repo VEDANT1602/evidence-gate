@@ -1,0 +1,229 @@
+{
+  "configuration": {
+    "as_of": "2026-11-04",
+    "bm25_b": 0.75,
+    "bm25_k1": 1.2,
+    "cache_disabled_for_quality_evaluation": true,
+    "minimum_coverage": 0.3
+  },
+  "corpus_version": "7a6371d5535d667a2c921d5accf4d72218268a5938f3b8673006a1fb27a033e1",
+  "data_kind": "original_fictional_fixture",
+  "documents": 58,
+  "holdout_categories": {
+    "access_boundary": {
+      "baseline": {
+        "answer_attempts": 1,
+        "answer_coverage": 1.0,
+        "answerable_case_accuracy": 0.0,
+        "cases": 1,
+        "correct_answers": 0,
+        "inadmissible_answer_count": 0,
+        "required_answers": 0,
+        "selective_answer_accuracy": 0.0,
+        "task_success_rate": 0.0,
+        "task_successes": 0
+      },
+      "gated": {
+        "answer_attempts": 0,
+        "answer_coverage": 0.0,
+        "answerable_case_accuracy": 0.0,
+        "cases": 1,
+        "correct_answers": 0,
+        "inadmissible_answer_count": 0,
+        "required_answers": 0,
+        "selective_answer_accuracy": 0.0,
+        "task_success_rate": 1.0,
+        "task_successes": 1
+      }
+    },
+    "ambiguous_scope": {
+      "baseline": {
+        "answer_attempts": 2,
+        "answer_coverage": 1.0,
+        "answerable_case_accuracy": 0.0,
+        "cases": 2,
+        "correct_answers": 0,
+        "inadmissible_answer_count": 2,
+        "required_answers": 0,
+        "selective_answer_accuracy": 0.0,
+        "task_success_rate": 0.0,
+        "task_successes": 0
+      },
+      "gated": {
+        "answer_attempts": 0,
+        "answer_coverage": 0.0,
+        "answerable_case_accuracy": 0.0,
+        "cases": 2,
+        "correct_answers": 0,
+        "inadmissible_answer_count": 0,
+        "required_answers": 0,
+        "selective_answer_accuracy": 0.0,
+        "task_success_rate": 1.0,
+        "task_successes": 2
+      }
+    },
+    "conflicting_sources": {
+      "baseline": {
+        "answer_attempts": 1,
+        "answer_coverage": 1.0,
+        "answerable_case_accuracy": 0.0,
+        "cases": 1,
+        "correct_answers": 0,
+        "inadmissible_answer_count": 0,
+        "required_answers": 0,
+        "selective_answer_accuracy": 0.0,
+        "task_success_rate": 0.0,
+        "task_successes": 0
+      },
+      "gated": {
+        "answer_attempts": 0,
+        "answer_coverage": 0.0,
+        "answerable_case_accuracy": 0.0,
+        "cases": 1,
+        "correct_answers": 0,
+        "inadmissible_answer_count": 0,
+        "required_answers": 0,
+        "selective_answer_accuracy": 0.0,
+        "task_success_rate": 1.0,
+        "task_successes": 1
+      }
+    },
+    "current_policy": {
+      "baseline": {
+        "answer_attempts": 15,
+        "answer_coverage": 1.0,
+        "answerable_case_accuracy": 0.0,
+        "cases": 15,
+        "correct_answers": 0,
+        "inadmissible_answer_count": 15,
+        "required_answers": 15,
+        "selective_answer_accuracy": 0.0,
+        "task_success_rate": 0.0,
+        "task_successes": 0
+      },
+      "gated": {
+        "answer_attempts": 15,
+        "answer_coverage": 1.0,
+        "answerable_case_accuracy": 1.0,
+        "cases": 15,
+        "correct_answers": 15,
+        "inadmissible_answer_count": 0,
+        "required_answers": 15,
+        "selective_answer_accuracy": 1.0,
+        "task_success_rate": 1.0,
+        "task_successes": 15
+      }
+    },
+    "tenant_isolation": {
+      "baseline": {
+        "answer_attempts": 2,
+        "answer_coverage": 0.6666666666666666,
+        "answerable_case_accuracy": 1.0,
+        "cases": 3,
+        "correct_answers": 2,
+        "inadmissible_answer_count": 0,
+        "required_answers": 2,
+        "selective_answer_accuracy": 1.0,
+        "task_success_rate": 1.0,
+        "task_successes": 3
+      },
+      "gated": {
+        "answer_attempts": 2,
+        "answer_coverage": 0.6666666666666666,
+        "answerable_case_accuracy": 1.0,
+        "cases": 3,
+        "correct_answers": 2,
+        "inadmissible_answer_count": 0,
+        "required_answers": 2,
+        "selective_answer_accuracy": 1.0,
+        "task_success_rate": 1.0,
+        "task_successes": 3
+      }
+    },
+    "unknown": {
+      "baseline": {
+        "answer_attempts": 0,
+        "answer_coverage": 0.0,
+        "answerable_case_accuracy": 0.0,
+        "cases": 2,
+        "correct_answers": 0,
+        "inadmissible_answer_count": 0,
+        "required_answers": 0,
+        "selective_answer_accuracy": 0.0,
+        "task_success_rate": 1.0,
+        "task_successes": 2
+      },
+      "gated": {
+        "answer_attempts": 0,
+        "answer_coverage": 0.0,
+        "answerable_case_accuracy": 0.0,
+        "cases": 2,
+        "correct_answers": 0,
+        "inadmissible_answer_count": 0,
+        "required_answers": 0,
+        "selective_answer_accuracy": 0.0,
+        "task_success_rate": 1.0,
+        "task_successes": 2
+      }
+    }
+  },
+  "input_sha256": {
+    "cases.json": "956d295c71e9ce4debd95c94c5c8bce5074a17ccb1bcf2f3096b733e119d61cf",
+    "corpus.jsonl": "6775cf83a70369ff4ff979c8bdc44cbcf6143092dc0deba1d99738c9ee9b8346"
+  },
+  "metrics": {
+    "dev": {
+      "baseline": {
+        "answer_attempts": 7,
+        "answer_coverage": 0.875,
+        "answerable_case_accuracy": 0.0,
+        "cases": 8,
+        "correct_answers": 0,
+        "inadmissible_answer_count": 5,
+        "required_answers": 4,
+        "selective_answer_accuracy": 0.0,
+        "task_success_rate": 0.125,
+        "task_successes": 1
+      },
+      "gated": {
+        "answer_attempts": 4,
+        "answer_coverage": 0.5,
+        "answerable_case_accuracy": 1.0,
+        "cases": 8,
+        "correct_answers": 4,
+        "inadmissible_answer_count": 0,
+        "required_answers": 4,
+        "selective_answer_accuracy": 1.0,
+        "task_success_rate": 1.0,
+        "task_successes": 8
+      }
+    },
+    "holdout": {
+      "baseline": {
+        "answer_attempts": 21,
+        "answer_coverage": 0.875,
+        "answerable_case_accuracy": 0.11764705882352941,
+        "cases": 24,
+        "correct_answers": 2,
+        "inadmissible_answer_count": 17,
+        "required_answers": 17,
+        "selective_answer_accuracy": 0.09523809523809523,
+        "task_success_rate": 0.20833333333333334,
+        "task_successes": 5
+      },
+      "gated": {
+        "answer_attempts": 17,
+        "answer_coverage": 0.7083333333333334,
+        "answerable_case_accuracy": 1.0,
+        "cases": 24,
+        "correct_answers": 17,
+        "inadmissible_answer_count": 0,
+        "required_answers": 17,
+        "selective_answer_accuracy": 1.0,
+        "task_success_rate": 1.0,
+        "task_successes": 24
+      }
+    }
+  },
+  "protocol_version": 1
+}
