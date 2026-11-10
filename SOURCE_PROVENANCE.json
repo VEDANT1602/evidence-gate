@@ -1,0 +1,99 @@
+{
+  "name": "evidence-gate",
+  "source_hub": "https://github.com/VEDANT1602/DataScienceProject",
+  "source_commit": "ef9c14c01163ad3eadb3eaa673c0073b14478184",
+  "source_prefix": "projects/evidence-gate",
+  "split_head": "6bc10b75fc860554382640bd19f3ae0251c77127",
+  "source_tree": "817f5b15b84b0ac93db0e4f2fcccb8620749d954",
+  "export_tree": "817f5b15b84b0ac93db0e4f2fcccb8620749d954",
+  "files": 21,
+  "history_commits": 1,
+  "extraction_date": "2026-11-10",
+  "original_files": [
+    {
+      "path": ".gitignore",
+      "git_blob": "10b0999cf4c4e09b084c993bd4b0d55350c013be"
+    },
+    {
+      "path": "LICENSE",
+      "git_blob": "9544d3354734c0c818fb02e893fb775f2b3daa4e"
+    },
+    {
+      "path": "README.md",
+      "git_blob": "578fff1b0a343b2cd2a61781bfb18c5552c3964a"
+    },
+    {
+      "path": "data/DATA_CARD.md",
+      "git_blob": "9dd2318a9b43e455b49aaaecdd4d115cb6483134"
+    },
+    {
+      "path": "data/cases.json",
+      "git_blob": "25524deecd6f454a2195bfd494dadb65e4cc4769"
+    },
+    {
+      "path": "data/corpus.jsonl",
+      "git_blob": "30a409919615f55db94770ed10392fcc8eb66ff8"
+    },
+    {
+      "path": "docs/architecture.md",
+      "git_blob": "4ad4ec89cf9c684c6065cf616d2ae87bea7193fc"
+    },
+    {
+      "path": "docs/evaluation.md",
+      "git_blob": "44d6f3b3cd2c6e10f5c2a220868629f0b03fa7f0"
+    },
+    {
+      "path": "evidence_gate/__init__.py",
+      "git_blob": "2d63588c2f582a5ca9db136a225f4067a3a5611c"
+    },
+    {
+      "path": "evidence_gate/__main__.py",
+      "git_blob": "858411952ea2d931e6bd4a0f86e09e99b59c3372"
+    },
+    {
+      "path": "evidence_gate/api.py",
+      "git_blob": "182ca820ac0d381b4e3118a0c40c867de4df1ba6"
+    },
+    {
+      "path": "evidence_gate/benchmark.py",
+      "git_blob": "3af12386763a8103e21b8647c78a403ddc16254f"
+    },
+    {
+      "path": "evidence_gate/core.py",
+      "git_blob": "8948dcbfccbc2c82749aa66ad1ab632779fcf5ca"
+    },
+    {
+      "path": "evidence_gate/fixture.py",
+      "git_blob": "7a490578cf1aa76196c9f5084f45888a0be954fe"
+    },
+    {
+      "path": "pyproject.toml",
+      "git_blob": "f7b7d97c910300b61d4630a09ff7e707c85beec5"
+    },
+    {
+      "path": "results/case-study.md",
+      "git_blob": "45a7a02d0b179a95ef4ea2730e4d844614b575d4"
+    },
+    {
+      "path": "results/metrics.json",
+      "git_blob": "7cd21e901bd6fda9b24160b6fda73ccc49c1021b"
+    },
+    {
+      "path": "results/predictions.jsonl",
+      "git_blob": "7908c37051026832cc05c51344c483088a58a8fe"
+    },
+    {
+      "path": "results/quality.svg",
+      "git_blob": "43c089efea797d23d85f6149b59efbc118d2c4c5"
+    },
+    {
+      "path": "tests/test_api.py",
+      "git_blob": "71aa78a0ffe184661c3fae34b91ec2a9056a9658"
+    },
+    {
+      "path": "tests/test_contract.py",
+      "git_blob": "fabebeae30dfc86b27e3ac97c96e870026103320"
+    }
+  ],
+  "measurement_artifacts_reexecuted": false
+}

@@ -108,3 +108,7 @@ An independently authored customer query set, a real identity provider, audited 
 The primary retrieval-method reference is Robertson and Zaragoza, [The Probabilistic Relevance Framework: BM25 and Beyond](https://doi.org/10.1561/1500000019). The nonnegative IDF variant and fixed constants used here are documented in the evaluation protocol.
 
 Code and the original fictional data are available under the [MIT license](LICENSE).
+
+## Standalone source and history
+
+This project is also available as a self-contained repository extracted from my original portfolio, with its project commit history and recorded artifacts retained. [Source and measurement provenance](PROVENANCE.md) documents the source revision, unchanged file blobs and packaging boundary.
