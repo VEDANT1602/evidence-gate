@@ -120,92 +120,39 @@ def render_report(result, path):
     n = gated["cases"]
     categories = "\n".join(f'| {category.replace("_", " ")} | {m["gated"]["cases"]} | {m["baseline"]["task_successes"]} | {m["gated"]["task_successes"]} |'
                            for category, m in result["holdout_categories"].items())
-    report = f'''# Evidence Gate: relevance is only one part of a usable answer
+    configuration = result["configuration"]
+    dev_count = result["metrics"]["dev"]["gated"]["cases"]
+    report = f"""# Which policy passages can support a cited answer?
 
-**Independent portfolio reference implementation by Vedant Thaker.** This is a newly built public engineering experiment on original fictional data. It does not reproduce a CSAA system, disclose client documents, or verify historical workplace metrics. The evaluated system extracts managed fact spans; no language model was evaluated.
+A support agent looking up a policy can find a passage that matches every keyword and still quote an obsolete rule. Both retrieval paths start from documents visible to the requester's tenant and role. Their difference is what happens to an accessible draft, expired policy, regional exception or conflict after that first filter.
 
-## The decision I started with
+The lexical baseline answered {baseline["answer_attempts"]} of {n} holdout requests. It cited inadmissible evidence {baseline["inadmissible_answer_count"]} times. The policy gate answered {gated["answer_attempts"]} requests and had {gated["inadmissible_answer_count"]} such citations. In this fixture, the expected behavior on {n-gated["required_answers"]} of the {n} cases was to clarify or abstain. Scoring only questions that received answers would discard those decisions.
 
-Should a support assistant answer because it found a similar document, or only when that document is authorized, approved, current, and specific enough for the request?
-
-I treated the answer as a decision contract. The requester needs a usable policy fact, an exact citation, or an explicit request for clarification. A confident answer from an expired policy is a failure even if the retrieval score is high.
-
-## Topic: document retrieval. Subtopic: admissible evidence
-
-A relevance-only workflow ranks passages and returns the highest match. This experiment implements BM25 from scratch as that comparator. Both systems filter tenant and role permissions **before** scoring. I did not create an artificially unsafe authorization baseline to make the proposed design look better.
-
-The comparator's deliberate limitation is narrower: it ignores approval, validity dates and geographic scope, then answers whenever a positive lexical match exists. It is an ablation, not a claim that all conventional RAG products behave this way.
-
-## I made the failure observable before adding a model
-
-The corpus contains {result["documents"]} authored policy documents across two fictional tenants. Expired policies and unapproved drafts repeat query terms. Current US and EU refund policies differ. Two simultaneously approved export policies contradict each other. Administrator-only material tests a separate role boundary.
-
-Those are constructed stress cases, not a representative sample of customer traffic. I used eight development cases to exercise the interface and a preassigned {n}-case holdout suite for the reported comparison. The threshold and formulas are explicit in `metrics.json`; no threshold search is performed. Because the same author designed the corpus and cases, the split is a reproducibility control, not an independent generalization study.
-
-## My framework: scope, retrieve, validate, answer or abstain
-
-1. Establish the principal outside the query text; scope candidate documents by tenant and roles.
-2. Apply approval, half-open validity intervals and an explicit region facet before ranking.
-3. Rank the remaining documents with the same BM25 implementation.
-4. Require minimum query-token coverage. If a selected managed claim has several regions and none was supplied, request clarification. If authoritative claims disagree, abstain.
-5. Return a verbatim span with its source and effective date. Key the bounded cache by tenant, roles, region, date, mode, corpus hash and query.
-
-The claim keys and verbatim fact spans are curated schema fields. This project does not solve arbitrary semantic conflict detection or free-form answer synthesis. Keeping that boundary explicit makes the implementation inspectable.
-
-```mermaid
-flowchart LR
-    A[Trusted principal and query] --> B[Tenant and role scope]
-    B --> C[Approval, date and region filters]
-    C --> D[BM25 retrieval]
-    D --> E{{Evidence contract}}
-    E --> F[Verbatim answer with citation]
-    E --> G[Clarify region or abstain]
-    F --> H[Principal-scoped bounded cache]
-    G --> H
-```
-
-## The measured result changed the decision, not just the rank
-
-| Holdout measure | ACL-aware relevance baseline | Evidence Gate |
-|---|---:|---:|
-| Correct answer/clarify/abstain outcomes | {baseline["task_successes"]}/{n} ({baseline["task_success_rate"]:.1%}) | {gated["task_successes"]}/{n} ({gated["task_success_rate"]:.1%}) |
+| Holdout measure | Access-scoped BM25 | Policy gate |
+| --- | ---: | ---: |
+| Expected outcome and fact span | {baseline["task_successes"]}/{n} ({baseline["task_success_rate"]:.1%}) | {gated["task_successes"]}/{n} ({gated["task_success_rate"]:.1%}) |
 | Requests answered | {baseline["answer_attempts"]}/{n} ({baseline["answer_coverage"]:.1%}) | {gated["answer_attempts"]}/{n} ({gated["answer_coverage"]:.1%}) |
-| Correct answers among answer attempts | {baseline["correct_answers"]}/{baseline["answer_attempts"]} ({baseline["selective_answer_accuracy"]:.1%}) | {gated["correct_answers"]}/{gated["answer_attempts"]} ({gated["selective_answer_accuracy"]:.1%}) |
-| Answers using inadmissible evidence | {baseline["inadmissible_answer_count"]} | {gated["inadmissible_answer_count"]} |
+| Correct among answers given | {baseline["correct_answers"]}/{baseline["answer_attempts"]} | {gated["correct_answers"]}/{gated["answer_attempts"]} |
+| Answers citing inadmissible evidence | {baseline["inadmissible_answer_count"]} | {gated["inadmissible_answer_count"]} |
 
-![Measured holdout comparison](quality.svg)
+![Holdout outcome and coverage rates](quality.svg)
 
-Task success requires exact agreement with both the expected status and fact span. Coverage is answered requests divided by all {n} holdout requests. Selective accuracy uses answered requests as its denominator. An inadmissible answer cites an unapproved, expired, future, or wrong-region document. These metrics are not LLM hallucination or factual-generalization scores.
+## What changes between the two paths
 
-| Holdout category | Cases | Baseline correct | Gate correct |
-|---|---:|---:|---:|
+The baseline ranks authorized passages by BM25 and returns a positive lexical match. The gate first checks approval, the half-open validity window and the requested region. After ranking, it requires at least {configuration["minimum_coverage"]:.0%} query-token coverage. A missing regional qualifier can trigger a clarification. Contradictory active facts under the same managed claim key trigger abstention.
+
+A returned answer is an exact stored span with a document citation. The [prediction log](predictions.jsonl) keeps the query, principal, expected result, cited document ID, quoted span and decision reason for each run. Filtering those records to one case ID gives the baseline and gated responses side by side. Cache lookup is disabled during quality evaluation.
+
+| Holdout case type | Cases | Baseline correct | Gate correct |
+| --- | ---: | ---: | ---: |
 {categories}
 
-Every numerator is reconstructible from `predictions.jsonl`. The benchmark disables the cache for quality evaluation; it cannot win by reusing development answers.
+The {result["documents"]} fictional documents and {dev_count} development cases exercise the same authored policy schema as the {n} held-out cases. The case mix deliberately emphasizes failure modes. Applying these rates to customer traffic would require independently collected questions, verified policy metadata and a reference answer for each. The source spans here are curated, so this experiment says nothing about a generative model's ability to write an accurate paraphrase.
 
-## What the result supports, and what it does not
+## Reproduce the contract decisions
 
-The observed improvement supports a small engineering decision: in this managed policy fixture, metadata gates and explicit abstention prevent the constructed stale/draft/scope failures. The main tradeoff is reduced answer coverage and additional document-governance work. Requiring a region creates friction when the caller could have supplied one up front.
+Run `python -m unittest discover -s tests -v` and `python -m evidence_gate benchmark` from the project root. Compare the fresh [metrics](metrics.json) with the [data card]({data_card}), [architecture]({architecture}) and [evaluation protocol]({evaluation}).
 
-There is insufficient evidence to estimate production accuracy, latency, financial savings, user satisfaction, or LLM behavior. No paid API, GPU benchmark, customer contract or employer system was used. A perfect result on a small author-written suite is not a deployment approval.
-
-The main alternative is relevance ranking followed by a stronger generative model. I did not run that alternative, so I make no comparative model-quality claim. A stronger model might recognize some policy conflicts, but it still needs trusted identity and version metadata; that is a design inference to test, not a measured result here.
-
-## The next decision I would take to a customer
-
-Keep this as a reference implementation. Before a pilot, obtain permissioned documents and independent queries, test identity integration, review region/validity semantics with policy owners, and evaluate any proposed language model separately. Measure correct supported answers, unnecessary abstention, unauthorized retrieval attempts, document-update lag and end-to-end latency. Revisit the design if document metadata is incomplete or users cannot provide required scope.
-
-My working style is reflected in the artifact: define the decision and denominators first; compare a simple alternative; retain per-case evidence; challenge what the numbers establish; and make the next action proportionate to that evidence.
-
-## Reproduce and inspect
-
-From this project directory: `python -m unittest discover -s tests -v`, then `python -m evidence_gate benchmark`. This report and the chart are generated from the same metrics object as `metrics.json`. Data hashes are recorded there. See the [data card]({data_card}), [architecture]({architecture}) and [evaluation protocol]({evaluation}).
-
-## References and originality
-
-- [Build Your Own X](https://github.com/codecrafters-io/build-your-own-x) supplied the from-scratch learning direction.
-- [RAG From Scratch](https://github.com/langchain-ai/rag-from-scratch) supplied conceptual context for indexing, retrieval and grounded generation. No tutorial code, datasets or reported results were copied.
-- The BM25 formula is a standard information-retrieval method; the implementation, fictional corpus, query suite, contract layer, API, tests and narrative in this project were written for this repository.
-- Robertson and Zaragoza's [The Probabilistic Relevance Framework: BM25 and Beyond](https://doi.org/10.1561/1500000019) is a primary reference for the retrieval method. The nonnegative IDF variant and constants used here are stated in the evaluation protocol.
-'''
+Independent experiment by Vedant Thaker. The conceptual references are [Build Your Own X](https://github.com/codecrafters-io/build-your-own-x), [RAG From Scratch](https://github.com/langchain-ai/rag-from-scratch), and [Robertson and Zaragoza on BM25](https://doi.org/10.1561/1500000019).
+"""
     path.write_text(report, encoding="utf-8")

@@ -1,20 +1,10 @@
 # Evidence Gate
 
-**An answer should survive an evidence check before it reaches the user.**
+An expired policy can be the closest text match in the database. In this fictional policy collection, both retrieval paths enforce tenant and role permissions before scoring. The second path also checks validity, region and agreement among approved sources before returning a cited span.
 
-I built this reference system to examine a narrow applied-AI problem: a passage can be highly relevant and still be an unusable basis for an answer. It may be expired, unapproved, from the wrong region, or outside the requester's permissions.
+On 24 constructed holdout cases, the scoped evidence checks produced the expected decision 24 times. Relevance alone did so five times. Each row records whether the expected action was to answer, ask for clarification or abstain. [Predictions](results/predictions.jsonl) · [Case study](results/case-study.md) · [Cache and access regressions](tests/test_contract.py)
 
-The project pairs an original BM25 implementation with an explicit evidence contract. It runs entirely on Python's standard library. The baseline and the proposed system share the same authorization boundary; the experiment isolates what metadata gates and abstention add after that boundary.
-
-**New independent portfolio work, not a historical client delivery.** All policy documents and queries are fictional. The evaluated answers are extracted spans, not generated text. This repository does not claim measured LLM performance or reproduce an employer's proprietary system.
-
-## Read the engineering story
-
-Start with the [generated case study](results/case-study.md): the decision, common approach, controlled failure, framework, measured result, tradeoff, and next action.
-
-On the fixed 24-case holdout fixture, Evidence Gate produced 24 correct answer/clarify/abstain decisions. The relevance-only ablation produced 5. That is a regression-suite result on constructed stress cases, not an estimate of customer accuracy. The complete [metrics](results/metrics.json) and [per-case predictions](results/predictions.jsonl) are included.
-
-![Measured comparison on the fixed fictional suite](results/quality.svg)
+![Comparison on the fixed fictional suite](results/quality.svg)
 
 ## Run it in under a minute
 
